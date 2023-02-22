@@ -124,6 +124,13 @@ public final class MenuFactory {
     private static void initializeMenus(
             Map<String, List<MenuInfo>> menus, Set<String> elementsToSkip) {
         try {
+            //System.out.println(new org.apache.jmeter.examples.sampler.gui.ExampleSamplerGui())
+            ClassFinder
+                    .findClassesThatExtend(
+                            JMeterUtils.getSearchPaths(),
+                            new Class[] {JMeterGUIComponent.class, TestBean.class}).stream().forEach(e -> {
+                                System.out.println(e);
+                    });
             List<String> guiClasses = ClassFinder
                     .findClassesThatExtend(
                             JMeterUtils.getSearchPaths(),

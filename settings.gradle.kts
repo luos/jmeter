@@ -67,6 +67,7 @@ include(
     "src:protocol:mongodb",
     "src:protocol:native",
     "src:protocol:tcp",
+    "src:examples:main",
     "src:release",
     "src:testkit",
     "src:testkit-wiremock",

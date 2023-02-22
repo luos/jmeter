@@ -25,7 +25,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import org.apache.jmeter.examples.sampler.ExampleSampler;
+import org.apache.jmeter.gui.GUIMenuSortOrder;
 import org.apache.jmeter.samplers.gui.AbstractSamplerGui;
+import org.apache.jmeter.testbeans.TestBean;
 import org.apache.jmeter.testelement.TestElement;
 import org.apache.jmeter.util.JMeterUtils;
 
@@ -38,7 +40,8 @@ import org.apache.jmeter.util.JMeterUtils;
  * The GUI class is not invoked in non-GUI mode, so it should not perform any
  * additional setup that a test would need at run-time
  */
-public class ExampleSamplerGui extends AbstractSamplerGui {
+@GUIMenuSortOrder(111)
+public class ExampleSamplerGui extends AbstractSamplerGui implements TestBean {
 
     private static final long serialVersionUID = 240L;
 

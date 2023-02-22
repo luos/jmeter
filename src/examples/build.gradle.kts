@@ -18,3 +18,10 @@
 dependencies {
     api(project(":src:components"))
 }
+
+subprojects {
+    dependencies {
+        api(project(":src:core"))
+        testImplementation(project(":src:core", "testClasses"))
+    }
+}

@@ -17,6 +17,7 @@
 
 package org.apache.jmeter.examples.testbeans.example1;
 
+import java.util.Date;
 import java.util.Locale;
 
 import org.apache.jmeter.samplers.AbstractSampler;
@@ -41,6 +42,7 @@ public class Example1 extends AbstractSampler implements TestBean {
         res.setSamplerData(myStringProperty);
         res.sampleStart();
         // Do something ...
+        System.out.println("This is atest" + new Date().toString());
         res.setResponseData(myStringProperty.toUpperCase(Locale.ENGLISH), null);
         res.setDataType(SampleResult.TEXT);
         res.sampleEnd();

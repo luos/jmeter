@@ -33,7 +33,7 @@ var jars = arrayOf(
     ":src:launcher",
     ":src:components",
     ":src:core",
-    // ":src:examples",
+    ":src:examples",
     ":src:functions",
     ":src:jorphan",
     ":src:protocol:bolt",
