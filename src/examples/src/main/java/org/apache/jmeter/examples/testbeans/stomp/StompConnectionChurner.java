@@ -46,6 +46,7 @@ public class StompConnectionChurner extends AbstractSampler implements TestBean 
     private String host5;
 
 
+    private Boolean send;
 
     private String username;
     private String password;
@@ -87,6 +88,15 @@ public class StompConnectionChurner extends AbstractSampler implements TestBean 
             String x = in.readLine();
             boolean connected = Arrays.equals(x.getBytes(StandardCharsets.UTF_8), CONNECTED);
             if (connected) {
+                if (send){
+                    String s = Thread.currentThread().getName();
+                    out.write("SEND\n");
+                    out.write("destination:/queue/"+s+"\n");
+                    out.write("\n");
+                    out.write("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n");
+                    out.write("\0");
+                    out.flush();
+                }
                 res.setSuccessful(true);
             } else {
                 System.out.println("Received: " + x);
@@ -170,4 +180,13 @@ public class StompConnectionChurner extends AbstractSampler implements TestBean 
     public void setHost5(String host5) {
         this.host5 = host5;
     }
+
+    public Boolean getSend() {
+        return send;
+    }
+
+    public void setSend(Boolean send) {
+        this.send = send;
+    }
+
 }
