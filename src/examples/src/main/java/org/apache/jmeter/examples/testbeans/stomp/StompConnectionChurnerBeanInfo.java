@@ -47,6 +47,7 @@ public class StompConnectionChurnerBeanInfo extends BeanInfoSupport {
         getprop("username", "guest");
         getprop("password", "guest");
         getprop("send", false);
+        getprop("receipt", false);
 
     }
 }

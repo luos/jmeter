@@ -48,8 +48,13 @@ public class StompConnectionChurner extends AbstractSampler implements TestBean 
 
     private Boolean send;
 
+    private Boolean receipt; 
+
+
     private String username;
     private String password;
+    
+    private int receiptCounter = 0;
 
 
     private static byte[] CONNECTED = "CONNECTED".getBytes(StandardCharsets.UTF_8);
@@ -72,6 +77,10 @@ public class StompConnectionChurner extends AbstractSampler implements TestBean 
         return host1;
     }
 
+    private String destination() {
+        return "/exchange/stomp-in/x";
+    }
+
     @Override
     public SampleResult sample(Entry ignored) {
         SampleResult res = new SampleResult();
@@ -89,9 +98,11 @@ public class StompConnectionChurner extends AbstractSampler implements TestBean 
             boolean connected = Arrays.equals(x.getBytes(StandardCharsets.UTF_8), CONNECTED);
             if (connected) {
                 if (send){
-                    String s = Thread.currentThread().getName();
                     out.write("SEND\n");
-                    out.write("destination:/queue/"+s+"\n");
+                    out.write("destination:"+destination()+"\n");
+                    if (receipt) {
+                        out.write("receipt:" + (receiptCounter++) + "\n");
+                    }
                     out.write("\n");
                     out.write("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n");
                     out.write("\0");
@@ -187,6 +198,15 @@ public class StompConnectionChurner extends AbstractSampler implements TestBean 
 
     public void setSend(Boolean send) {
         this.send = send;
+    }
+
+        
+    public Boolean getReceipt() {
+        return receipt;
+    }
+
+    public void setReceipt(Boolean receipt) {
+        this.receipt = receipt;
     }
 
 }

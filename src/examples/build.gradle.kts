@@ -16,7 +16,11 @@
  */
 
 dependencies {
+
     api(project(":src:components"))
+
+    implementation("io.vertx:vertx-amqp-client:4.4.0")
+
 }
 
 subprojects {
@@ -25,3 +29,4 @@ subprojects {
         testImplementation(project(":src:core", "testClasses"))
     }
 }
+

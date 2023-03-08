@@ -80,6 +80,8 @@ dependencies {
     implementation("com.github.weisj:darklaf-property-loader")
     implementation("com.github.weisj:darklaf-extensions-rsyntaxarea")
     implementation("com.miglayout:miglayout-swing")
+    implementation("io.vertx:vertx-amqp-client:4.4.0")
+
     implementation("commons-codec:commons-codec") {
         because("DigestUtils")
     }
